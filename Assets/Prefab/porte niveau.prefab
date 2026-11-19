@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8823571359699889637}
   - component: {fileID: 6743973517733665071}
   - component: {fileID: 1957578274454531734}
+  - component: {fileID: 3143984726088295565}
   m_Layer: 0
   m_Name: porte niveau
   m_TagString: Untagged
@@ -112,3 +113,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.5, y: 3.25, z: 0.25}
   m_Center: {x: 0, y: 1.6250005, z: 0}
+--- !u!95 &3143984726088295565
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5086697439302760698}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d4841d091bad4ca46b5b1d35142e74c7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
