@@ -13,6 +13,10 @@ public class EtatAttente : EtatPersonnage
         {
             return new EtatDeplacement();
         }
+        if (personnage.AttaqueEnCours)
+        {
+            return new EtatAttaque();
+        }
         return this;
     }
 }

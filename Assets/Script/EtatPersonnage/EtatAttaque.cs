@@ -1,16 +1,20 @@
+using UnityEditor;
 using UnityEngine;
 
-public class EtatAttaque : MonoBehaviour
+public class EtatAttaque : EtatPersonnage
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public override void EntrerEtat(Personnage personnage)
     {
-        
+        //Debug.Log("entrer dans l'etat attaque entrer etat");
+        base.EntrerEtat(personnage);
+        personnage.Attaquer();
     }
-
-    // Update is called once per frame
-    void Update()
+    public override EtatPersonnage ExecuterEtat(Personnage personnage)
     {
-        
+        if (personnage.AttaqueEnCours)
+        {
+            return this;
+        }
+        return new EtatAttente();
     }
 }

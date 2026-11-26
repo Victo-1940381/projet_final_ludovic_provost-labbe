@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,7 +13,8 @@ public class Personnage : MonoBehaviour
     private float vitesseRotation;
     [SerializeField, Tooltip("la vitesse de déplacement du personnage")]
     private float vitesse;
-
+    [SerializeField,Tooltip("delai de l'attaque")]
+    private float TempsAttaque;
     public bool AttaqueEnCours {  get; private set; }
 
     private bool enMarche;
@@ -72,6 +74,28 @@ public class Personnage : MonoBehaviour
             etatPrecedent.SortirEtat(this);
         }
     }
+    public void OnAttaque(InputAction.CallbackContext context)
+    {
+        //Debug.Log("entrer de la methode on attaque");
+        if (context.performed)
+        {
+            AttaqueEnCours = true;
+        }
+    }
+    public void Attaquer()
+    {
+        //Debug.Log("entrer dans la methode attaquer");
+        StartCoroutine(CoroutineDeAttaque());
+    }
+
+    public IEnumerator CoroutineDeAttaque()
+    {
+        //Debug.Log("entrer dans la coroutine d'attaque");
+        personnageAnim.SetTrigger("Attaquer");
+
+        yield return new WaitForSeconds(TempsAttaque);
+        AttaqueEnCours = false;
+    }
     /// <summary>
     /// code provenant du projet Demo-rpg de Automne 2025
     /// https://github.com/Cours-Alexandre-Ouellet/demo-rpg
@@ -83,7 +107,7 @@ public class Personnage : MonoBehaviour
 
       
         deplacement = vitesse * Time.deltaTime * deplacement.normalized;
-        Debug.Log($"ctrl={controleDeplacement} | dep={deplacement}");
+        //Debug.Log($"ctrl={controleDeplacement} | dep={deplacement}");
         transform.position += deplacement;
 
       
