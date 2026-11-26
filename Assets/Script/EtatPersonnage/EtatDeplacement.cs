@@ -9,6 +9,7 @@ public class EtatDeplacement : EtatPersonnage
     public override void EntrerEtat(Personnage personnage)
     {
         base.EntrerEtat(personnage);
+        personnage.DemarrerDeplacement();
 
     }
     public override EtatPersonnage ExecuterEtat(Personnage personnage)
@@ -23,5 +24,6 @@ public class EtatDeplacement : EtatPersonnage
     public override void SortirEtat(Personnage personnage)
     {
         base.SortirEtat(personnage);
+        personnage.ArreterDeplacement();
     }
 }

@@ -1,8 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Animator))]
 public class Personnage : MonoBehaviour
 {
+
+    private Animator personnageAnim;
     private Vector2 controleDeplacement;
     private float controleRotation;
     [SerializeField, Tooltip("la vitesse de rotation du personnage")]
@@ -24,6 +27,7 @@ public class Personnage : MonoBehaviour
     private void Awake()
     {
         etatSuivant = new EtatAttente();
+        personnageAnim = GetComponent<Animator>();
     }
     /// <summary>
     /// code provenant du projet Demo-rpg de Automne 2025
@@ -32,7 +36,17 @@ public class Personnage : MonoBehaviour
     public void OnDeplacement(InputAction.CallbackContext context)
     {
         controleDeplacement = context.ReadValue<Vector2>();
+        
         enMarche = controleDeplacement.sqrMagnitude > 0.01f;
+
+    }
+    public void DemarrerDeplacement()
+    {
+        personnageAnim.SetBool("Marcher", true);
+    }
+    public void ArreterDeplacement()
+    {
+        personnageAnim.SetBool("Marcher", false);
     }
     /// <summary>
     /// code provenant du projet Demo-rpg de Automne 2025
@@ -69,6 +83,7 @@ public class Personnage : MonoBehaviour
 
       
         deplacement = vitesse * Time.deltaTime * deplacement.normalized;
+        Debug.Log($"ctrl={controleDeplacement} | dep={deplacement}");
         transform.position += deplacement;
 
       
