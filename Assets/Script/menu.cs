@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class menu : MonoBehaviour
@@ -21,5 +22,9 @@ public class menu : MonoBehaviour
     {
         mixer.SetFloat("VolumeMaster", Mathf.Log10(Mathf.Max(volume, 0.0001f)) * 20);
         PlayerPrefs.SetFloat("VolumeMaster", volume);
+    }
+    public void ChangerScene(string NomScene)
+    {
+        SceneManager.LoadScene(NomScene);
     }
 }
